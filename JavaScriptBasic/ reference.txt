@@ -2,5 +2,9 @@
   command + O 웹 사이트 열기 단축키,
   command + , 설정창 단축키,
   Shift + Option + F 셋팅한 설정 문서에 다시 셋팅하기
+
+  # 깃허브 올리기 
   git remote origin add (repository 주소)
+  git remote -v (생성된 깃 repository주소 확인)
+  git push origin master (최종 업로드) 
   
