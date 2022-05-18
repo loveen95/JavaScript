@@ -4,7 +4,12 @@
   Shift + Option + F 셋팅한 설정 문서에 다시 셋팅하기
 
   # 깃허브 올리기 
-  git remote origin add (repository 주소)
-  git remote -v (생성된 깃 repository주소 확인)
-  git push origin master (최종 업로드) 
+  - git remote origin add (repository 주소)
+  - git remote -v (생성된 깃 repository주소 확인)
+  - git push origin master (최종 업로드) 
+  # 깃허브 master에서 main으로 바꾸기
+  - git branch (현재 master인지 main인지 확인해주는 명령어)
+  - git branch -m master main (master -> main 변경)
+  - git pull origin main --allow-unrelated-histories (깃허브 저장소에 있는 내용을 로컬 저장소에 반영)
+  - git push -u origin main (깃허브에 업로드)
   
