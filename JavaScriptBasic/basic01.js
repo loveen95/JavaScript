@@ -119,6 +119,115 @@ y || !y // True
 'codeit' !== z + 'odeit' // False
 x < 4 || !(y === true) // True 
 
+// typeof 연산자 
+typeof 101 // number
+typeof 1.0 // number
+
+// typeof 함수가 사칙연산자보다 더 우선이기 때문에 string이 출력되고 Codeit이 이어서 출력된다.
+console.log(typeof 'Hello' + 'Codeit'); //   stringCodeit
+// 문자열 number - 3 즉 숫자가 아니다로 인식해서 NaN이 나온다.
+console.log(typeof 8 - 3);  // NaN
+console.log(typeof (8 - 3)) // number 
+
+console.log (typeof typeof(3 * 3)) // string
+
+// 연산자 우선순위 참조 링크
+// https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
+
+
+// String, Number, Boolean
+// 형변환 
+console.log(Number('10') + Number('5')); 
+// 불린 -> 문자
+let s = true;
+console.log(y); //true
+console.log(String(y)); // true
+console.log(typeof y); // boolean
+console.log(typeof String(y)); // string  
+
+// 문자 -> 숫자
+let v = '123'
+console.log(x); // 123
+console.log(Number(x)); // 123
+console.log(typeof x); // string
+console.log(typeof Number(x)); // number 
+
+// 불린 -> 숫자
+let d = false; 
+console.log(y); // false
+console.log(Number(y)); // NaN
+console.log(typeof y); // boolean 
+console.log(typeof Number(y)); // number 
+
+// 문자 -> 불린         // '', 0, NaN 값은 Boolean()시에 false가 나온다. 
+let h = '';
+console.log(Boolean(z)); // false
+console.log(typeof Boolean(z)); // boolean 
+
+// 숫자 -> 불린       
+let k = 23
+console.log(Boolean(k)); // false 
+console.log(typeof Boolean(k)); // boolean  
+
+// 문제) 형변환 출력 값
+console.log(Number('1' + '2' + '3') - Number(true)); // 122 
+// - 괄호가 먼저 연산되서 문자 '123' -> Number로 형변환 123 -> true를 Number로 형변환 1 -> 123 - 1 = 122가 출력된다.
+
+// Boolean("false") // true (문자열 false이기 때문에 결과는 true)
+// Boolean(6 % 2)  // false (0이 나오기 때문에 false)
+// Boolean(NaN || Boolean('0')) // true (NaN은 false '0'은 문자열이기 때문에 true)
+// Boolean(typeof false) // true (false의 타입은 string이고, 문자열을 불린으로 형변환 했기 때문에 결과는 true)
+
+console.log(4 + '3'); // 43
+console.log(4 - true); // 3 
+console.log(4 / '2'); // 2 
+console.log(4 % 'two'); // NaN  
+
+console.log(1 === '1'); // false       일치(===), 불일치(!==)는 형변환이 X
+console.log(1 === true); // false 
+console.log(1 == "1"); // true         동등(==), 부등(!=)은 형변환이 일어난다.
+console.log(1 == true); // true          
+
+
+// 템플릿 문자열
+let year = 1995;
+let month = 12; 
+let day = 14;
+console.log(`생년월일은 ${year}년 ${month}월 ${day}일입니다.`) 
+
+let myNumber = 3;
+function getTwice(x){
+  return x * 2;
+}
+console.log(`${myNumber}의 두배는 ${getTwice(myNumber)}입니다.`) 
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
