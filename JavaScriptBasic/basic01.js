@@ -278,7 +278,286 @@ function printArea(){
 radius = 4;
 console.log(printArea());
 radius = 7; 
-console.log(printArea());
+console.log(printArea());  
+
+
+// if문 (if statement) //
+function checkHeight(height) {
+	if (height >= 140){
+	  console.log('탑승이 가능합니다.');
+	} else {
+	  console.log('탑승이 불가능합니다.');
+	}
+}
+
+// 테스트 코드
+checkHeight(140);
+checkHeight(135);  
+
+/*의 코드보다 좋은 코드 
+function checkHeight(height) {
+  const LIMIT = 140;
+  let passMessage = '탑승이 가능합니다.';
+  let failMessage = '탑승이 불가능합니다.';
+
+  if (height >= LIMIT) {
+    console.log(passMessage);
+  } else {
+    console.log(failMessage);
+  }
+} 
+*/ 
+
+// else if문 //
+function printGrade(midtermScore, finalScore){
+	let totalScore = midtermScore + finalScore;
+  if (totalScore >= 90){
+    console.log('A'); 
+  } else if (totalScore >=80){
+    console.log('B');
+  } else if (totalScore >= 70){
+    console.log('C');
+  } else if (totalScore >= 60){
+    console.log('D');
+  } else {
+    console.log('F');
+  }
+}
+
+// 테스트 코드
+printGrade(25, 35); // D
+printGrade(50, 45); // A 
+
+// 문제) 
+// 나의 나이와, 나의 성별을 저장하는 변수
+let myAge = 26;
+let myGender = 'male';
+
+// 호칭을 담은 변수
+let callOlderBrother = '형';
+let callOlderSister = '누나';
+let callFriend = '친구';
+let callYoungerSister = '여동생';
+let callYoungerBrother = '남동생';
+
+// 상대방의 나이와 성별에 따른 호칭을 리턴하는 함수 whatShouldICall를 완성하세요.
+function whatShouldICallYou(yourAge, yourGender) {
+  if (myAge > yourAge && myGender === yourGender){
+    return callYoungerBrother;
+  } else if (myAge > yourAge && myGender !== yourGender){
+    return callYoungerSister;
+  } else if (myAge < yourAge && myGender === yourGender){
+    return callOlderBrother;
+  } else if (myAge < yourAge && myGender !== yourGender){
+    return callOlderSister;
+  } else {
+    return callFriend;
+  }
+}
+
+// 테스트 코드
+let result1 = whatShouldICallYou(25, 'female');
+let result2 = whatShouldICallYou(20, 'male');
+let result3 = whatShouldICallYou(26, 'female');
+let result4 = whatShouldICallYou(30, 'male');
+let result5 = whatShouldICallYou(31, 'female');
+
+console.log(result1);
+console.log(result2);
+console.log(result3);
+console.log(result4);
+console.log(result5);   
+
+// switch문 (switch statement) // 값을 비교할때에는 자료형을 엄격하게 구분한다. 
+/* switch (비교할값){
+    case 조건값_1:
+      동작부분;
+      break;
+    case 조건값_1:
+      동작부분;
+      break; 
+
+// switch문은 값들을 비교할 때 자료형을 엄격하게 구분한다는 것과 if문으로 대체할 때는 반드시 등호 3개로 일치비교를 해야한다.
+} */ 
+let myChoie = 2;    
+switch(myChoie){
+  case 1:
+    console.log("토끼");
+    break;  // break를 작성하지 않으면 다음switch문도 동작된다. 
+  case 2:
+    console.log("고양이");
+    break;
+  default:
+    console.log("숫자를 선택해 주세요."); 
+
+// 문제)
+// 각 등급별 가격
+let VIPPrice = 15;
+let RPrice = 13;
+let SPrice = 10;
+let APrice = 8;
+
+// 각 등급에 맞는 가격을 출력하는 함수 checkPrice를 완성하세요.
+function checkPrice(grade) {
+	switch(grade){
+	  case 'R':
+	    console.log(`${grade}석은 ${RPrice}만원 입니다.`);
+	    break;
+	  case 'VIP':
+	    console.log(`${grade}석은 ${VIPPrice}만원 입니다.`);
+	    break;
+	  case 'S':
+	    console.log(`${grade}석은 ${SPrice}만원 입니다.`);
+	    break;
+	  case 'A':
+	    console.log(`${grade}석은 ${APrice}만원 입니다.`);
+	    break;
+	  default:
+	    console.log("VIP, R, S, A 중에서 하나를 선택해 주세요.");
+	    break;
+	}
+}
+
+// 테스트 코드
+checkPrice('R'); // R석은 13만원 입니다.
+checkPrice('VIP'); // VIP석은 15만원 입니다.
+checkPrice('S'); // S석은 10만원 입니다.
+checkPrice('A'); // A석은 8만원 입니다.
+checkPrice('B'); // VIP, R, S, A 중에서 하나를 선택해 주세요.  
+
+
+// 반복문 (loop statement)//
+/*for (초기화부분; 조건부분; 추가동작부분){
+    동작부분 
+}*/  
+// 1~100까지 짝수만 출력하기
+for (let i = 1; i <= 100; i++){
+  if (i % 2 === 0) {
+    console.log(i);
+  }
+}
+// 또는 
+for (let m = 2; m <= 100; m += 2) {
+  console.log(m);
+} 
+
+// 문제) 별 만들기
+function printTriangle(height) {
+  let message = '';
+  for (let i = 0; i < height; i++) {
+    message += '*';
+    console.log(message);
+  }
+}
+
+// 테스트 코드
+console.log('높이: 1');
+printTriangle(1);
+
+console.log('높이: 3');
+printTriangle(3);
+
+console.log('높이: 5');
+printTriangle(5); 
+
+/*while (조건부분){                
+    동작부분;
+} */ 
+ let while_ex = 30; 
+
+ while (while_ex % 7 !== 0){ //   while_ex가 7로 안나눠지면 반복문 동작! 나눠지면 반복문 탈출!
+   while_ex++;
+ }
+console.log(while_ex); 
+
+// 문제) 1~100 까지 홀수만 출력하시오.
+let repeat = 0;
+while (repeat <= 100){
+  repeat++;
+  if (repeat % 2 !== 0){
+    console.log(repeat); 
+  }
+}
+
+// 문제2) 정수 180의 약수를 모두 출력하고, 총 몇개의 약수가 있는지 출력하는 프로그램을 작성
+const N = 180;
+let q = 1;
+let count = 0;
+while (q <= N){
+  if (N % q === 0){
+    console.log(q);
+    count += 1;
+  }
+  q++; 
+}
+console.log(`${N}의 약수는 총 ${count}개입니다.`)
+
+
+// break 와 continue // 
+let b_c = 1;
+while (b_c <= 10){
+  console.log(b_c);
+  if(b_c === 7){
+    break; 
+  }
+  b_c++;
+}
+
+for (let ct = 1; ct <= 10; ct++){
+  if (ct % 2 == 0){
+    continue;
+  }
+  console.log(ct);
+}
+
+let k = 1;
+while (k <= 10){
+  if(k % 2 === 0){
+    k++;
+    continue;
+  }
+  console.log(k); 
+  k++;
+}
+
+// 문제) 1단 ~ 9단 구구단 만들기
+for (let i = 1; i <= 9; i++){
+  for(let j = 1; j <= 9; j++){
+    console.log(`${i} * ${j} = ${i*j}`);
+  }
+} 
+
+// 문제2) 피보나치 수열
+let pre = 0;
+let curr = 1;
+for (let i = 0; i <=50; i++){
+  console.log(curr);
+  let temp = pre;
+  pre = curr;
+  curr = temp + curr;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
