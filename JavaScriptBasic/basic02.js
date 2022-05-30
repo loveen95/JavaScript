@@ -236,6 +236,196 @@ workDayCalc(jaeSangStart);  // 오늘은 입사한 지 1151일째 되는 날 입
 // Date 참조 사이트 - https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date
 
 
+// 배열 (Array) //  
+let courseRanking = [
+  '자바스크립트 프로그래밍 기초',
+  'Git으로 배우는 버전 관리',
+  '컴퓨터 개론',
+  '파이썬 프로그래밍 기초'
+];
+// indexing (0~...) 
+console.log(courseRanking[2]); // 컴퓨터 개론
+
+// 배열 다루기 // 
+console.log(courseRanking.length); 
+courseRanking[4] = "Nice";  // 이렇게 접근하면 요소 추가가 된다.
+console.log(courseRanking); 
+
+// 문제) 배열을 이용하여 섭씨를 화씨로 바꾸기
+let celsiusTemps = [27, 25, 26, 22, 28, 27, 21];
+let fahrenheitTemps = [];
+
+for (let i = 0; i < celsiusTemps.length; i++){
+  fahrenheitTemps[i] = (celsiusTemps[i] * 9 / 5 ) + 32;
+}  
+
+// fahrenheitTemps 테스트
+console.log(fahrenheitTemps);
+
+
+// 배열 메소드 //
+// splice(삭제할 배열, 삭제할 배열 수, 추가할 item) 배열 삭제하기   
+courseRanking.splice(1,0,"빅데이터"); // 1번 배열에 "빅데이터"를 추가한다.
+console.log(courseRanking);  
+courseRanking.splice(1,1,"빅데이터"); // 1번 배열의 요소를 삭제하고 그자리에 "빅데이터"를 추가한다.
+console.log(courseRanking);  
+
+// 문제)
+let fruits = ['레몬', '토마토', '딸기', '바나나'];
+let ages = [20, 24, 25, 29, 30, 33];
+let numbers = [];
+
+// fruits 배열에 '토마토'를 삭제하고 그 자리에 '사과', '청포도' 를 추가해 주세요.
+fruits.splice(1,1,"사과","청포도");
+
+// fruits 배열의 첫 번째 요소를 삭제해 주세요.
+
+fruits.splice(0,1);
+
+// ages 배열에 마지막 요소를 삭제해 주세요.
+
+ages.splice(-1,1);
+
+// ages 배열의 2번, 3번 인덱스를 26, 28로 변경해 주세요.
+
+ages.splice(2,1,26);
+ages.splice(3,1,28);
+
+// numbers 배열에 1, 2, 3, 5, 8, 9를 순서대로 추가해 주세요.
+
+numbers.splice(0,0,1,2,3,5,8,9); 
+
+
+// 반복문을 활용해서 numbers 배열의 요소들 중 홀수를 모두 삭제해 주세요.
+for (let i = 0; i < numbers.length;i++){
+  if (numbers[i] % 2 !== 0) { // 홀수이면
+    numbers.splice(i, 1);
+    i--;   
+  }
+}
+// 테스트 코드
+console.log(fruits[1]);  // 청포도
+console.log(fruits[0]);  // 사과
+console.log(ages[ages.length - 1]); // 30
+console.log(ages[3]); // 28
+console.log(numbers[3]); // undefined
+console.log(numbers); // [2, 8] 
+
+// 배열의 첫 요소를 삭제 : shift()
+// 배열의 마지막 요소를 삭제 : pop()
+// 배열의 첫 요소로 값 추가 : unshift(value) 
+// 배열의 마지막 요소로 값 추가 : push(value) 
+// 배열에서 특정 값 찾기 : indexOf(item) 
+let brands = ['Google', 'Kakao', 'Naver', 'Kakao'];
+console.log(brands.indexOf('Kakao')); // 해당 값이 있는 인덱스가 리턴된다. 정답 : 1
+console.log(brands.lastIndexOf('Kakao')); // 해당 값을 반대로 탐색해서 인덱스가 리턴된다. 정답 : 3
+// 배열에서 특정 값이 있는 지 확인하기(includes) 
+console.log(brands.includes("Kakao")); // true 
+console.log(brands.includes("Daum")); // fslse 
+// 배열 뒤집기 (reverse) 
+console.log(brands.reverse()); // ["Kakao", "Naver", "Kakao", "Google"] 
+// 배열 참조 사이트 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+
+// for..of 반복문
+for (let element of brand) {  // for of는 배열의 요소가 들어간다. 배열의 인덱스를 활용하고 싶다면 in보다는 of가 더 적합하다.
+  console.log(element);   
+}  
+
+// 문제) 투표 집계하기
+let votes = [
+  '이재식', '이재식', '이규하', '이규하', '이규하',
+  '이재식', '이재식', '이규하', '이규하', '이재식',
+  '이규하', '이규하', '이규하', '이규하', '이재식',
+  '이재식', '이규하', '이재식', '이재식', '이재식',
+  '이재식', '이재식', '이규하', '이규하', '이규하',
+  '이규하', '이규하', '이재식', '이규하', '이규하',
+  '이규하', '이규하', '이재식', '이규하', '이규하',
+  '이규하', '이재식', '이재식', '이재식', '이규하',
+];
+
+// 후보별 득표수 객체
+let voteCounter = {};
+let count1 = 0;
+let count2 = 0;
+// votes 배열을 이용해서 voteCounter 객체를 정리하기
+for (let name of votes) {
+  // 코드를 작성하세요.
+  if (name in voteCounter) { // in은 key 값을 설정해주고 propertyName이 있는 경우
+    voteCounter[name]+= 1; // 요소에다가 += 1을 해준다.  
+  } else {
+    voteCounter[name] = 1; // propertyName이 없는 경우 1을 만들어준다.
+  }
+}
+// 후보별 득표수 출력
+console.log(voteCounter); // { '이재식': 17, '이규하': 23 }
+ 
+
+// 다차원 배열 (multidimensions array // 
+let twoDimensions = [[1, 2],[2,4]];
+console.log(twoDimensions[0][0]);
+
+// 문제) 
+let groups = [
+	['영준', '캡틴'], 
+	['태순', '우재'],
+	['재훈', '지웅'],
+	['윤형', '동욱'],
+	['규식', '소원'],
+];
+
+let teams = [
+	[],
+	[],
+];
+
+// 여기에 코드를 작성해 주세요.
+for (let i = 0; i < groups.length; i++){ 
+    teams[0][i] = groups[i][0];
+    teams[1][i] = groups[i][1];                   
+  }
+
+// 테스트 코드
+console.log(teams[0]); // [ '영준', '태순', '재훈', '윤형', '규식' ]
+console.log(teams[1]); // [ '캡틴', '우재', '지웅', '동욱', '소원' ]
+
+
+// 자료형 심화 // 
+// 숫자 표기법
+let myNumber = 1e9; // 100000000 
+// 16진법 
+let hex1 = 0xff; // 255 
+// 8진법
+let octal = 0o377; // 255
+// 2진법 
+let binary = 0b11111111; // 255 
+
+// 숫자형 메소드
+// toFixed(0 ~ 100) 
+let myNumber = 0.35776; 
+console.log(myNumber.toFixed(2)); // 0.36 
+// toString(2 ~ 36) 
+let myNumber2 = 255; 
+console.log(myNumber2.toString(2)); // 2진법 타입은 string이다.
+
+// Math 객체
+// 절댓값 - 어떤 값의 양수 버전(positive number) 
+console.log(Math.abs(-10)); // 5 - Math.abs()는 절댓값을 리턴해준다.
+console.log(Math.max(2, -1, 4, 5, 0)); // 10 - Math.max(),Math.min()는 최댓값,최솟값을 리턴 
+console.log(Math.pow(2,3)); // 8 - Math.pow(x,y)는 제곱값을 리턴
+console.log(Math.sqrt(25)); // 5 - Math.pow(x)는 제곱근을 리턴 
+console.log(Math.round(2.6)); // 3 - Math.round(x,y)는 제곱값을 리턴
+
+
+
+
+
+
+
+ 
+
+
+
 
 
 
