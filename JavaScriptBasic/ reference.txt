@@ -12,5 +12,5 @@
   - git branch (현재 master인지 main인지 확인해주는 명령어)
   - git branch -m master main (master -> main 변경)
   - git pull origin main --allow-unrelated-histories (깃허브 저장소에 있는 내용을 로컬 저장소에 반영)
-  - git push -u origin main (깃허브에 업로드)
+  - git push -u origin main (최종으로 깃허브에 업로드) 
   

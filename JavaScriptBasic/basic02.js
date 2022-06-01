@@ -474,7 +474,7 @@ hyungdon = lyrics.slice(startIndex, endIndex);
 
 
 // 테스트 코드
-console.log(hyungdon);
+console.log(hyungdon); // 
 
 
 

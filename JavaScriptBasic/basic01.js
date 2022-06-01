@@ -135,7 +135,7 @@ console.log (typeof typeof(3 * 3)) // string
 
 
 // String, Number, Boolean
-// 형변환 //
+// 형변환 ///
 console.log(Number('10') + Number('5')); 
 // 불린 -> 문자
 let s = true;
