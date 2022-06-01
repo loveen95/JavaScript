@@ -474,7 +474,137 @@ hyungdon = lyrics.slice(startIndex, endIndex);
 
 
 // 테스트 코드
-console.log(hyungdon); // 
+console.log(hyungdon); 
+
+
+// 기본형과 참조형(reference Type)// 
+let refer = {name: "yunbeen"}; 
+let refer2 = refer; 
+refer2.gender = "women"; 
+console.log(refer2); // { name: 'yunbeen', gender: 'women' } 
+// 기본형은 변수 = 값, 참조형은 변수 = 주소값  
+
+// 문제)
+let x = ['Kim', 'Na', 'Park', 'Lee'];
+let y = x;
+
+y.push('Lim');
+x[4] = 'Sung';
+
+console.log(y); // ['Kim', 'Na', 'Park', 'Lee', 'Sung'] 같은 주소 값을 가르키기 때문에
+
+// 문제2) 
+let x = {
+  numbers: [1, 2, 3, 4],
+  title: 'Codeit',
+};
+let y = x.numbers;
+let z = x.title;
+ 
+x.numbers.unshift(5); 
+x.title = 'Hello';
+
+console.log(y); // [5,1,2,3,4]
+console.log(z); // Codeit  
+
+// 참조형 복사하기 // 
+// 배열을 복사할때는 slice()를 사용하면 참조형만 복사가 가능하다. 
+// 객체 복사하기 
+let course1 = {
+  title: "파이썬 프로그래밍 기초", 
+  language: "Python"
+}; 
+
+let course2 = course1;
+
+course2.title = "알고리즘의 정석"
+console.log(course1); // { title: '알고리즘의 정석', language: 'Python' }
+console.log(course2); // { title: '알고리즘의 정석', language: 'Python' } 
+// 같은 주소를 참조하기 때문에 course1, course2 둘다 같은 값이 나온다. 
+// 이때에 course2만 따로 복사하고 싶다면 어떻게 해야할까? 
+// 객체는 slice()같은 메서드가 없다. 
+let course1 = {
+  title: "파이썬 프로그래밍 기초", 
+  language: "Python"
+}; 
+
+let course2 = {};
+for (let key in course1){
+  course2[key] = course1[key];
+}
+
+course2.title = "알고리즘의 정석"
+
+// 일단 복사를 하면 이렇게 되긴 한다. 하지만 매번 같은 객체를 생성하면 그때마다 바꿔야 하는 귀찮음이 있다.
+console.log(course1); // { title: '파이썬 프로그래밍 기초', language: 'Python}
+console.log(course2); // { title: '알고리즘의 정석', language: 'Python' } 
+
+
+function referenceCopy (object){ 
+  let temp = {}; 
+
+  for (let key in object){
+    temp[key] = object[key];
+  }
+  return temp;
+
+}
+
+let course1 = {
+  title: "파이썬 프로그래밍 기초", 
+  language: "Python"
+}; 
+let course2 = referenceCopy(course1);
+let course3 = referenceCopy(course2); 
+
+course2.title = "알고리즘 구조"; 
+course3.title = "자바스크립트 기초";
+console.log(course1); // { title: '파이썬 프로그래밍 기초', language: 'Python' }
+console.log(course2); // { title: '알고리즘 구조', language: 'Python' }
+console.log(course3); // { title: '자바스크립트 기초', language: 'Python' }
+
+// 문제1) 배열 복사해서 카페 메뉴 레시피 만들기 
+let espresso = ['espresso'];
+
+let americano = espresso.slice();
+americano.push('water'); 
+
+let caffeLatte = espresso.slice();
+caffeLatte.push('milk');
+
+// 여기에 caffeMocha와 vanillaLatte 레시피를 만들어 주세요.
+let caffeMocha = caffeLatte.slice();
+caffeMocha.push('chocolateSyrup'); 
+
+let vanillaLatte = caffeLatte.slice();
+vanillaLatte.push('vanillaSyrup');
+
+
+// 테스트 코드
+console.log(espresso); //[ 'espresso' ]
+console.log(americano); // [ 'espresso', 'water' ]
+console.log(caffeLatte); // [ 'espresso', 'milk' ]
+console.log(caffeMocha); // [ 'espresso', 'milk', 'chocolateSyrup' ]
+console.log(vanillaLatte); // [ 'espresso', 'milk', 'vanillaSyrup' ]
+
+
+ // const, 변수와 상수 사이
+ // 문제)
+let team1 = ['Drum', 'Bass', 'Saxophone'];
+const team2 = team1;
+
+team1.splice(2, 1, 'Trumpet');  
+team2.splice(2, 1, 'Piano');   
+
+console.log(team1); // [ 'Drum', 'Bass', 'Piano' ]
+console.log(team2); // [ 'Drum', 'Bass', 'Piano' ]
+// const 키워드로 변수를 선언하게 되면 값을 재할당할 수 없지만, 
+// 할당된 값이 객체나 배열일 경우 메소드를 통해서 그 값을 변경할수 있다.       
+
+
+
+
+
 
 
 
