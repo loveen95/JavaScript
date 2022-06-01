@@ -403,7 +403,7 @@ let binary = 0b11111111; // 255
 // 숫자형 메소드
 // toFixed(0 ~ 100) 
 let myNumber = 0.35776; 
-console.log(myNumber.toFixed(2)); // 0.36 
+console.log(myNumber.toFixed(2)); // 0.36 // string 형이여서 숫자로 사용할라면 형변환을 해줘야한다. 
 // toString(2 ~ 36) 
 let myNumber2 = 255; 
 console.log(myNumber2.toString(2)); // 2진법 타입은 string이다.
@@ -414,9 +414,67 @@ console.log(Math.abs(-10)); // 5 - Math.abs()는 절댓값을 리턴해준다.
 console.log(Math.max(2, -1, 4, 5, 0)); // 10 - Math.max(),Math.min()는 최댓값,최솟값을 리턴 
 console.log(Math.pow(2,3)); // 8 - Math.pow(x,y)는 제곱값을 리턴
 console.log(Math.sqrt(25)); // 5 - Math.pow(x)는 제곱근을 리턴 
-console.log(Math.round(2.6)); // 3 - Math.round(x,y)는 제곱값을 리턴
+console.log(Math.round(2.6)); // 3 - Math.round(x,y)는 반올림값을 리턴 
+console.log(Math.floor(2.4)); // 2 - 버림값을 리턴
+console.log(Math.floor(2.4)); // 3 - 올림값을 리턴
+console.log(Math.random());  // 0~1 미만의 값이 랜덤으로 리턴
+// https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math    
+
+// 문제) 이자를 계산해주는 함수 작성 
+function interestCalculator(r,v,n){
+  let interest = v * n * (n+1) / 2 * r / 12;
+  console.log(Math.round(interest));
+};
+
+// 이율이 4.3%일 때 매월 80만원씩 24개월 납입할 경우
+interestCalculator(0.043, 800000, 24);
+
+// 이율이 4.3%일 때 매월 60만원씩 24개월 납입할 경우
+interestCalculator(0.043, 600000, 24);
 
 
+// 문자열 심화// 
+/* 
+let myString = "Hi Yunbeen";
+// 문자열 길이 
+console.log(myString.length);
+// 요소 접근 
+console.log(myString[3]); // 대괄호 표기법
+console.log(myString.charAt(3)); //charAt 메소드
+// 요소 탐색
+console.log(myString.indexOf('a'));
+console.log(myString.lastIndexOf('i')); 
+// 대소문자 변환
+console.log(myString.toUpperCase()); // 대문자로 변환
+console.log(myString.toLowerCase()); // 소문자로 변환 
+// 양끝 공백 제거
+console.log(myString.trim); 
+// 부분 문자열 접근 slice(start, end)
+console.log(myString.slice(3)); // Yunbeen
+console.log(myString.slice(0,2)); // Hi
+*/
+
+// 문자열도 '문자'+'열'이기 때문에 배열과 비슷한 부분들이 많다. 
+// 모두 length 프로퍼티를 가지고 있고, 대괄호 표기법으로 요소에 접근이 가능하다. 
+// 하지만 typeof메소드를 사용하면 문자열은 string이고, 배열은 object이다. 
+// string과 array 를 비교 했을때 일치 비교 뿐만아니라, 동등 비교에서도 false가 나온다. 
+// 가장 중요한 차이점은 array는 mutable(바뀔수 있는)자료형인 반면에, 
+// 문자열은 Immutable(바뀔수 없는)자료형이다.
+// 그러므로 문자열에는 splice같은 메서드들을 사용할수 없다. 
+
+// 문제)
+let lyrics = "[재석]너에게 나 하고 싶었던 말 고마워 미안해 함께 있어서 할 수 있어서 웃을 수 있어[준하] 정말 고마웠어 내 손을 놓지 않아줘서 힘을 내볼게 함께 있다면 두렵지 않아[홍철] 내가 늘 웃으니까 내가 우습나 봐 하지만 웃을 거야 날 보고 웃는 너 좋아[명수] 자꾸만 도망치고 싶은데 저 화려한 큰 무대 위에 설 수 있을까? 자신 없어..[하하] 지금까지 걸어온 이 길을 의심하지는 마 잘못 든 길이 때론 지도를 만들었잖아[형돈] 혼자 걷는 이 길이 막막하겠지만 느리게 걷는 거야 천천히 도착해도 돼[길] 술 한 잔 하자는 친구의 말도 의미 없는 인사처럼 슬프게 들릴 때 날 찾아와";
+
+let hyungdon = null;
+
+let startIndex = lyrics.indexOf('[형돈]');
+let endIndex = lyrics.indexOf('[길]');
+
+hyungdon = lyrics.slice(startIndex, endIndex);
+
+
+// 테스트 코드
+console.log(hyungdon);
 
 
 
