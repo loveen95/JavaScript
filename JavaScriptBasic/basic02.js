@@ -601,7 +601,31 @@ console.log(team2); // [ 'Drum', 'Bass', 'Piano' ]
 // const 키워드로 변수를 선언하게 되면 값을 재할당할 수 없지만, 
 // 할당된 값이 객체나 배열일 경우 메소드를 통해서 그 값을 변경할수 있다.       
 
+// 문제) 가장 적은 지폐의 거스름돈 구하기
+function calculateChange(payment, cost) {
+  let change = payment - cost; // 거스름돈 총액
 
+  function billCounting(amount) {
+    const count = (change - (change % amount)) / amount;
+    change = change - amount * count;
+    return count;
+  }
+
+  const fiftyCount = billCounting(50000);
+  const tenCount = billCounting(10000);
+  const fiveCount = billCounting(5000);
+  const oneCount = billCounting(1000);
+
+  console.log(`50000원 지폐: ${fiftyCount}장`);
+  console.log(`10000원 지폐: ${tenCount}장`);
+  console.log(`5000원 지폐: ${fiveCount}장`);
+  console.log(`1000원 지폐: ${oneCount}장`);
+}
+
+// 테스트 코드
+calculateChange(100000, 33000);
+console.log('');
+calculateChange(500000, 378000);
 
 
 
