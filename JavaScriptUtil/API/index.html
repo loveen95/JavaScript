@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- ctrl + k + f = 코드 자동 정렬-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API연습</title>
+</head>
+
+<body>
+  <h1>책 검색 API</h1>
+  <p></p>
+  <input id="bookName" value="" type="text" placeholder="책 제목을 입력하세요">
+  <button id="search">검색</button>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+  <script>
+    // html에서 자바 스크립트를 쓰려면 script안에 써줘야한다.
+    // 만약 입력창에다가 책 제목을 검색해서 가져올라면 어떻게 해야할까? 
+    $(document).ready(function () { // jquery를 쓰기위해 .ready를 제일 먼저 써야한다.but 권장되지 않음
+      // document.addEventListener("DOMContentLoaded", function(){}; 이 방식 사용 권장!!
+      $("#search").click(function () {
+        $.ajax({ // 요청에대한 정보 
+          method: "GET", // POST & GET 방식중 알맞은 메소드 입력
+          url: "https://dapi.kakao.com/v3/search/book?target=title", // 보낼 url
+          data: { query: $("#bookName").val() }, //json 형식 
+          headers: { Authorization: "KakaoAK 558d87d9a263ce088d4d261db7ba2554" } // REST API 키 입력
+        })
+          .done(function (msg) { // 응답에 대한 정보
+            //alert("Data Saved: " + msg); // 경고창 띄어주기
+
+            // cosole창에만 나와있는 상태
+            console.log(msg.documents[0].title);
+            console.log(msg.documents[0].thumbnail);
+            // jquery문법안에 자바스크립트 문법 넣기 
+            $("p").append("<strong>" + msg.documents[0].title + "</strong>");
+            $("p").append("<img src='" + msg.documents[0].thumbnail + "<'/>");
+
+          });
+      });
+    });
+      // JSON데이터 JavaScript 접근법 - value가져오기(변수.key)
+      // 1. object를 store as global Variable로 저장 => 응답받은 json을 console창에서 다루기 위해 따로 저장해두는 것
+      // temp1이 생성된다 => temp1.document[0].title # 0 번째의 title 데이터를 불러옴 =>"미움받을 용기" 
+
+  </script>
+
+</body>
+
+</html>
