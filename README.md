@@ -1,2 +1,2 @@
 # JavaScript
-codeit 강의 
+인터넷 강의 
